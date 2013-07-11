@@ -30,12 +30,9 @@ function wlCommonInit(){
 	
 	
 	// Common initialization code goes here
-	
-	//$("#botaoProgramacao").bind('click', getItens);
 
 }
 
-//var getItens = function() {
 function getProgramacao() {	
 	var sucessoProgramacao = function(result) {
 		WL.Logger.debug("sucessoProgramacao: " + result.invocationResult);
@@ -46,7 +43,7 @@ function getProgramacao() {
 			WL.Logger.debug("sucessoProgramacao: OK!\n" + programacao);
 			
 		} else {
-			WL.Logger.error("ERRO sucessoProgramacao - Items.length=" + result.invocationResult.Items.length);
+			WL.Logger.error("ERRO sucessoProgramacao - rss.channel.item.length=" + result.invocationResult.rss.channel.item.length);
 		}
 	};
 	
@@ -71,6 +68,40 @@ function getProgramacao() {
 	alert('test');
 }
 
+function getUnidades() {	
+	var sucessoUnidades = function(result) {
+		WL.Logger.debug("sucessoUnidades: " + result.invocationResult);
+		var unidades = result.invocationResult.unidades;
+		if(unidades.length > 0) {
+			//Exibir unidades na tela...
+			
+			WL.Logger.debug("sucessoUnidades: OK!\n" + unidades);
+			
+		} else {
+			WL.Logger.error("ERRO sucessoUnidades - unidades.length=" + result.invocationResult.unidades.length);
+		}
+	};
+	
+	var falhaUnidades = function(result) {
+		WL.Logger.debug("falhaUnidades: " + result);
+	};
+	
+	var invocationData = {
+			adapter : 'SescRSS',
+			procedure : 'getUnidades',
+			parameters : []
+	};
+	
+	var options = {
+			onSuccess : sucessoUnidades,
+			onFailure : falhaUnidades,
+			invocationContext : {}
+	};
+	
+	
+	WL.Client.invokeProcedure(invocationData, options);
+	alert('test unidades');
+}
 
 /* JavaScript content from js/SescFacil.js in folder android */
 /*

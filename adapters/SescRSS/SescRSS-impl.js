@@ -49,7 +49,28 @@ function getProgramacao(unidade) {
 }
 
 function getUnidades() {
-	var unidadesJSON = '';
+	var unidadesJSON = {
+		    "unidades": [
+		                 {
+		                     "id": 13,
+		                     "nome": "SESC Vila Mariana",
+		                     "endereco": "Rua Pelotas, 141, Vila Mariana SAO PAULO | CEP: 04012-000",
+		                     "coords": {
+		                         "lat": -23.5817,
+		                         "lon": -46.6442
+		                     }
+		                 },
+		                 {
+		                     "id": 26,
+		                     "nome": "SESC Santo Amaro",
+		                     "endereco": "Rua Amador Bueno, 505, Santo Amaro SAO PAULO | CEP: 04752-005",
+		                     "coords": {
+		                         "lat": -23.6529,
+		                         "lon": -46.7132
+		                     }
+		                 }
+		             ]
+		         };
 	return unidadesJSON;
 }
 
