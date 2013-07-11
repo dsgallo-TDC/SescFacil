@@ -11,13 +11,34 @@
 	<script>window.$ = window.jQuery = WLJQ;</script>
 	<script src="jqueryMobile/jquery.mobile-1.2.1.js"></script>
 </head>
-<body id="content" style="display: none;"><div data-role="page" id="page">
+<body id="content" style="display: none;">
+	<div data-role="page" id="menuInicial">
 		<div data-role="content" style="padding: 15px">
-			<a href="#" data-role="button" id="botaoProgramacao" onclick="getProgramacao()">Programação SESC Vila Mariana</a>
+			<a href="#listaEventos" data-role="button" id="botaoProgramacao" onclick="getProgramacao('getProgramacao', 13)">Programação SESC Vila Mariana</a>
+			<a href="#" data-role="button" id="botaoProgramacaoCategoria" onclick="getProgramacao('getProgramacaoPorCategoria', 49)">Programação Categoria Teatro</a>
 			<a href="#" data-role="button" id="botaoUnidades" onclick="getUnidades()">Teste getUnidades</a>
 		</div>
 		<div data-role="header" id="header" data-position="fixed">
 			<h3>SESC Fácil</h3>
+		</div>
+	</div>
+	<div id="detalhesEvento" data-role="page" data-add-back-btn="true" data-back-btn-text="Back">
+		<div data-role="content">
+		    <p id="titulo"></p>
+		    <p id="data"></p>
+		    <div id="descricao"></div>
+		</div>
+		<div data-role="header" id="header" data-position="fixed">
+			<h3>Evento</h3>
+		</div>
+	</div>
+	<div id="listaEventos" data-role="page" data-add-back-btn="true" data-back-btn-text="Back">
+		<div data-role="header" data-position="fixed">
+			<h3>Lista Eventos</h3>
+		</div>
+		<div data-role="content">
+			<ul data-role="listview" id="ulListaEventos">
+			</ul>
 		</div>
 	</div>
 

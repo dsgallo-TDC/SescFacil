@@ -58,15 +58,47 @@
 
     </head>
     <body id="content" style="display: none;">
-        <div data-role="page" id="page">
+	
+        <div data-role="page" id="menuInicial">
             <div data-role="content" style="padding: 15px">
 			
-                <a data-role="button" href="#" id="botaoProgramacao" onclick="getProgramacao()">Programa&ccedil;&atilde;o SESC Vila Mariana</a>
+                <a data-role="button" href="#listaEventos" id="botaoProgramacao" onclick="getProgramacao('getProgramacao', 13)">Programa&ccedil;&atilde;o SESC Vila Mariana</a>
+			<a data-role="button" href="#" id="botaoProgramacaoCategoria" onclick="getProgramacao('getProgramacaoPorCategoria', 49)">Programa&ccedil;&atilde;o Categoria Teatro</a>
 			<a data-role="button" href="#" id="botaoUnidades" onclick="getUnidades()">Teste getUnidades</a>
             </div>
             <div data-position="fixed" data-role="header" id="header">
 			
                 <h3>SESC F&aacute;cil</h3>
+            </div>
+	
+        </div>
+	
+        <div data-add-back-btn="true" data-back-btn-text="Back" data-role="page" id="detalhesEvento">
+            <div data-role="content">
+		    
+                <p id="titulo"></p>
+		    
+                <p id="data"></p>
+		    
+                <div id="descricao"></div>
+            </div>
+            <div data-position="fixed" data-role="header" id="header">
+			
+                <h3>Evento</h3>
+            </div>
+	
+        </div>
+	
+        <div data-add-back-btn="true" data-back-btn-text="Back" data-role="page" id="listaEventos">
+            <div data-position="fixed" data-role="header">
+			
+                <h3>Lista Eventos</h3>
+            </div>
+            <div data-role="content">
+			
+                <ul data-role="listview" id="ulListaEventos">
+			
+                </ul>
             </div>
 	
         </div>

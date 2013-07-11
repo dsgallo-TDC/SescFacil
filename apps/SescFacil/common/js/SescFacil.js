@@ -5,6 +5,8 @@
 * disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
 */
 
+var programacao;
+
 function wlCommonInit(){
 
 	/*
@@ -31,12 +33,27 @@ function wlCommonInit(){
 
 }
 
-function getProgramacao() {	
+function mostraDetalhe(index) {
+	alert(programacao[index].title);
+	$('#detalhesEvento').find('#titulo').text(programacao[index].title);
+	$('#detalhesEvento').find('#data').text('Data: ' + programacao[index].date);
+	$('#detalhesEvento').find('#descricao').html(programacao[index].description);
+	
+	$.mobile.changePage($("#detalhesEvento"));
+}
+
+function getProgramacao(procedureName, id) {	
 	var sucessoProgramacao = function(result) {
 		WL.Logger.debug("sucessoProgramacao: " + result.invocationResult);
-		var programacao = result.invocationResult.rss.channel.item;
+		programacao = result.invocationResult.rss.channel.item;
 		if(programacao.length > 0) {
 			//Exibir programação na tela...
+			//$('#menuInicial').hide();
+			for(var i = 0; i < programacao.length; i++) { //onclick="mostraDetalhe(\'' + programacao[i].title + '\', \'' + programacao[i].date + '\', \' '+ programacao[i].description + '\')"
+				$('#ulListaEventos').append('<li><a href="#detalheEvento" onclick="mostraDetalhe(' + i + ')">' + programacao[i].title + '</a></li>');
+			}
+			$('#ulListaEventos').listview('refresh');
+			//$('#listaEventos').show();
 			
 			WL.Logger.debug("sucessoProgramacao: OK!\n" + programacao);
 			
@@ -51,8 +68,8 @@ function getProgramacao() {
 	
 	var invocationData = {
 			adapter : 'SescRSS',
-			procedure : 'getProgramacao',
-			parameters : [13] //unidade
+			procedure : procedureName, //getProgramacao ou getProgramacaoPorCategoria
+			parameters : [id] //unidade ou categoria
 	};
 	
 	var options = {
@@ -65,6 +82,11 @@ function getProgramacao() {
 	WL.Client.invokeProcedure(invocationData, options);
 	alert('test');
 }
+
+$("li").bind('vclick', function(event)
+		{
+	alert(this.innerHTML);
+		});
 
 function getUnidades() {	
 	var sucessoUnidades = function(result) {

@@ -44,6 +44,17 @@ function getProgramacao(unidade) {
 	    path : path
 	};
 	
+	return WL.Server.invokeHttp(input);
+}
+
+function getProgramacaoPorCategoria(categoria) {
+	path = getPathPorCategoria(categoria);
+	
+	var input = {
+	    method : 'get',
+	    returnedContentType : 'xml',
+	    path : path
+	};
 	
 	return WL.Server.invokeHttp(input);
 }
@@ -78,3 +89,6 @@ function getPath(unidade) {
 	return 'rss/programacao/unidade/' + unidade + '.rss';
 }
 
+function getPathPorCategoria(categoria) {
+	return 'rss/programacao/categoria/' + categoria + '.rss';
+}
