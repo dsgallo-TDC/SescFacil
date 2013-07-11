@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="SescFacil">
+        <wb-resource deploy-path="/" source-path="/apps/SescFacil/common"/>
+        <wb-resource deploy-path="/" source-path="/apps/SescFacil/android"/>
+        <wb-resource deploy-path="/" source-path="/apps/SescFacil/iphone"/>
+        <property name="context-root" value="SescFacil"/>
+    </wb-module>
+</project-modules>
