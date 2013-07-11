@@ -34,10 +34,11 @@ function wlCommonInit(){
 }
 
 function mostraDetalhe(index) {
-	alert(programacao[index].title);
+	//alert(programacao[index].title);
 	$('#detalhesEvento').find('#titulo').text(programacao[index].title);
 	$('#detalhesEvento').find('#data').text('Data: ' + programacao[index].date);
 	$('#detalhesEvento').find('#descricao').html(programacao[index].description);
+	$('#detalhesEvento').find('#linkInfo').attr('href', programacao[index].link);
 	
 	$.mobile.changePage($("#detalhesEvento"));
 }
@@ -80,7 +81,6 @@ function getProgramacao(procedureName, id) {
 	
 	
 	WL.Client.invokeProcedure(invocationData, options);
-	alert('test');
 }
 
 $("li").bind('vclick', function(event)
